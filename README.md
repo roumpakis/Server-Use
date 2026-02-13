@@ -185,7 +185,7 @@ nvidia-smi
 
 <p align="center">
   <img src="simages/sm1_before.png" width="48%">
-  <img src="simages/sm1_after.png" width="48%">
+  <img src="simages/smi1_after.png" width="48%">
 </p>
 
 <p align="center">
@@ -202,8 +202,16 @@ nvidia-smi
 watch -n 1 nvidia-smi
 ```
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot of live GPU monitoring*
+<p align="center">
+  <img src="simages/sm2_before.png" width="48%">
+  <img src="simages/smi2_after.png" width="48%">
+</p>
+
+<p align="center">
+  <b>Before</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>After</b>
+</p>
+
 
 ------------------------------------------------------------------------
 
@@ -227,7 +235,7 @@ nvidia-smi dmon -d 1
 
 <p align="center">
   <img src="simages/smi3_before.png" width="48%">
-  <img src="simages/sm3_after.png" width="48%">
+  <img src="simages/smi3_after.png" width="48%">
 </p>
 
 <p align="center">
@@ -244,8 +252,16 @@ nvidia-smi dmon -d 1
 nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv
 ```
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot showing GPU process list*
+<p align="center">
+  <img src="simages/smi4_before.png" width="48%">
+  <img src="simages/smi4_after.png" width="48%">
+</p>
+
+<p align="center">
+  <b>Before</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>After</b>
+</p>
+
 
 ------------------------------------------------------------------------
 
