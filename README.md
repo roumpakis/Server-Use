@@ -116,9 +116,17 @@ print("Finished.")
 top -u $USER
 ```
 
- **Before Running Python Script:**\
+
+## CPU Usage Comparison
+
 <p align="center">
-  <img src="images/top_before.png" width="800">
+  <img src="simages/top_before.png" width="48%">
+  <img src="simages/top_after.png" width="48%">
+</p>
+
+<p align="center">
+  <b>Before</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>After</b>
 </p>
 
 
@@ -132,7 +140,7 @@ top -u $USER
 ps -u $USER -o rss= | awk '{sum+=$1} END {printf "My RAM usage: %.2f GB\n", sum/1024/1024}'
 ```
 
-📸 **Screenshot Placeholder:**\
+📸 **Screenshot Placeholder:**
 *Add screenshot showing RAM output result*
 
 ------------------------------------------------------------------------
