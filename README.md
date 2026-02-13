@@ -155,14 +155,23 @@ ps -u $USER -o rss= | awk '{sum+=$1} END {printf "My RAM usage: %.2f GB\n", sum/
 
 ------------------------------------------------------------------------
 
-## 1.3 Top RAM Consuming Processes
+## 1.3 Top RAM% & CPU% Consuming Processes
 
 ``` bash
 ps -u $USER -o pid,cmd,%cpu,%mem,rss --sort=-rss | head
 ```
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot of top RAM processes*
+📸 **Screenshot Placeholder:**
+<p align="center">
+  <img src="simages/ps_before.png" width="48%">
+  <img src="simages/ps_after.png" width="48%">
+</p>
+
+<p align="center">
+  <b>Before</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>After</b>
+</p>
+
 
 ------------------------------------------------------------------------
 
