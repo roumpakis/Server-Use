@@ -265,7 +265,177 @@ nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv
 
 ------------------------------------------------------------------------
 
+# 4) Releasing RAM / VRAM (PyTorch & TensorFlow)
 
+In a shared GPU environment, users should release memory after finishing
+training or experiments. The following methods affect **only your own
+Jupyter kernel / Python process**.
+
+------------------------------------------------------------------------
+
+## ✅ PyTorch: Free VRAM/RAM (within your notebook)
+
+### 1) Delete large tensors / models and run garbage collection
+
+``` python
+import gc
+del model
+del optimizer
+del loss
+del batch
+gc.collect()
+```
+
+### 2) Clear CUDA cache (VRAM cache)
+
+``` python
+import torch
+torch.cuda.empty_cache()
+```
+
+### 3) (Optional) Clean IPC handles (useful with DataLoader multiprocessing)
+
+``` python
+import torch
+torch.cuda.ipc_collect()
+```
+
+### 4) Synchronize before cleanup (ensure GPU kernels finish)
+
+``` python
+import torch
+torch.cuda.synchronize()
+```
+
+### 🔹 Recommended Cleanup Combination
+
+``` python
+import gc, torch
+
+torch.cuda.synchronize()
+gc.collect()
+torch.cuda.empty_cache()
+torch.cuda.ipc_collect()
+```
+
+📌 Note: `empty_cache()` does not always return all VRAM to the system,
+but it releases cached memory so new allocations can succeed.
+
+------------------------------------------------------------------------
+
+## ✅ TensorFlow / Keras: Free VRAM/RAM (within your notebook)
+
+### 1) Clear Keras session
+
+``` python
+import tensorflow as tf
+tf.keras.backend.clear_session()
+```
+
+### 2) Run garbage collection
+
+``` python
+import gc
+gc.collect()
+```
+
+### 3) Prevent full VRAM pre-allocation (recommended at the TOP of your notebook)
+
+``` python
+import tensorflow as tf
+
+gpus = tf.config.list_physical_devices('GPU')
+for gpu in gpus:
+    tf.config.experimental.set_memory_growth(gpu, True)
+```
+
+This prevents TensorFlow from reserving all GPU memory at startup.
+
+------------------------------------------------------------------------
+
+# PyTorch Training Template + Cleanup
+
+``` python
+# ===== PyTorch Training Template (shared GPU friendly) =====
+import gc
+import torch
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+model = ...            # your model
+optimizer = ...        # your optimizer
+criterion = ...        # your loss
+
+model.to(device)
+model.train()
+
+for epoch in range(num_epochs):
+    for batch in dataloader:
+        x, y = batch
+        x = x.to(device, non_blocking=True)
+        y = y.to(device, non_blocking=True)
+
+        optimizer.zero_grad(set_to_none=True)
+        out = model(x)
+        loss = criterion(out, y)
+        loss.backward()
+        optimizer.step()
+
+# ===== Cleanup (ONLY affects your kernel / process) =====
+del out, loss, x, y, batch
+del model, optimizer, criterion
+
+gc.collect()
+
+if torch.cuda.is_available():
+    torch.cuda.synchronize()
+    torch.cuda.empty_cache()
+    torch.cuda.ipc_collect()
+
+print("PyTorch cleanup done. If VRAM still appears high, restart the kernel.")
+```
+
+------------------------------------------------------------------------
+
+# TensorFlow / Keras Training Template + Cleanup
+
+``` python
+# ===== TensorFlow/Keras Training Template (shared GPU friendly) =====
+import gc
+import tensorflow as tf
+
+# Put this at the TOP of your notebook
+gpus = tf.config.list_physical_devices('GPU')
+for gpu in gpus:
+    try:
+        tf.config.experimental.set_memory_growth(gpu, True)
+    except Exception:
+        pass
+
+model = ...  # tf.keras.Model(...)
+model.compile(...)
+model.fit(...)
+
+# ===== Cleanup (ONLY affects your kernel / process) =====
+tf.keras.backend.clear_session()
+del model
+gc.collect()
+
+print("TensorFlow cleanup done. If VRAM still appears high, restart the kernel.")
+```
+
+------------------------------------------------------------------------
+
+## ⚠ Important
+
+If memory does not fully drop after cleanup, **restart the Jupyter
+kernel**.
+
+This is the only 100% reliable way to release all RAM/VRAM from your
+session.
+
+
+------------------------------------------------------------------------
 
 # Best Practices
 
