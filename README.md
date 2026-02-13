@@ -1,46 +1,15 @@
-# 🚀 Shared GPU Server --- User Guide (Jupyter / ML Infrastructure Manual)
+# Shared GPU Server --- User Monitoring Manual (Jupyter / ML)
 
 ## Overview
 
-This guide explains how to properly use and monitor resources on the
-shared ML server.
+This guide explains how users can monitor **CPU, RAM, and GPU usage** on
+a shared server environment.
+# System Resources Overview
 
-The server provides:
+This server provides the following shared hardware resources.
+All resources are shared among active users.
 
--   128 CPU threads\
--   1 TB RAM\
--   1× NVIDIA A100 (40GB VRAM)\
--   27 TB Storage
-
-All resources are **shared among active users**.
-
-------------------------------------------------------------------------
-
-## 🔴 Important Sections (Read First)
-
-Before running any training job, review:
-
--   ⚠ **CPU Thread Limits** → See Section 7\
--   📊 **Monitoring CPU / RAM Usage** → See Section 1\
--   🎮 **GPU Monitoring (nvidia-smi)** → See Section 2\
--   🔄 **Restart / Shutdown Kernel** → See Section 6
-
-These sections are critical for stable shared-server operation.
-
-------------------------------------------------------------------------
-
-# 📚 Table of Contents
-
-1.  System Resources Overview\
-2.  CPU & RAM Monitoring\
-3.  GPU Monitoring\
-4.  Identifying Your GPU Processes\
-5.  Releasing RAM / VRAM (PyTorch & TensorFlow)\
-6.  Restarting and Shutting Down Kernels (JupyterHub)\
-7.  CPU Thread Limits (Very Important)
-
-------------------------------------------------------------------------
-
+---
 
 ## 🧠 CPU
 
@@ -699,7 +668,7 @@ This applies only to that specific execution.
 
 ------------------------------------------------------------------------
 
-## Option C --- Permanent 
+## Option C --- 'Permanent'
 
 Add this to your `~/.bashrc`:
 
