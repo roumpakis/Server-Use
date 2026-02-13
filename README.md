@@ -668,7 +668,7 @@ This applies only to that specific execution.
 
 ------------------------------------------------------------------------
 
-## Option C --- Permanent (Recommended for Shared Servers)
+## Option C --- Permanent 
 
 Add this to your `~/.bashrc`:
 
