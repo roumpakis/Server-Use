@@ -437,6 +437,176 @@ session.
 
 ------------------------------------------------------------------------
 
+
+
+# 6) Restarting and Shutting Down Kernels (JupyterHub)
+
+In a shared GPU environment, properly restarting or shutting down your
+kernel ensures that RAM and GPU memory (VRAM) are released.
+
+This section explains:
+
+-   What each action does\
+-   When to use it\
+-   What happens internally\
+-   Why it matters on shared infrastructure
+
+------------------------------------------------------------------------
+
+## 🟢 1️⃣ Kernel Running (Before)
+
+When your notebook is active, you will see it under the **KERNELS**
+section:
+
+![Kernel Running](simages/j_before.png)
+
+This means: - A Python process is running - RAM is allocated - GPU
+memory may be allocated - Resources are reserved for your session
+
+------------------------------------------------------------------------
+
+## 🔴 2️⃣ Shut Down All Kernels
+
+Click:
+
+    KERNELS → Shut Down All
+
+You will see a confirmation dialog:
+
+![Shutdown Confirmation](simages/j_down.png)
+
+Press **Shut Down All**
+
+### What happens internally?
+
+-   All your notebook kernel processes are terminated
+-   RAM is freed
+-   GPU memory is released
+-   Your notebooks remain saved
+-   Other users are NOT affected
+
+------------------------------------------------------------------------
+
+## ⚠ 3️⃣ Server Becomes Unavailable
+
+After shutdown, you may see:
+
+![Server Unavailable](simages/j_restart.png)
+
+This means: - Your personal Jupyter server process has stopped - Your
+session is no longer active
+
+This is expected behavior.
+
+------------------------------------------------------------------------
+
+## 🔄 4️⃣ Restart the Server
+
+Click:
+
+    Restart
+
+You will then see:
+
+![Server Restarting](simages/j_restarting.png)
+
+This means:
+
+-   A fresh container / process is starting
+-   A new clean Python environment is being created
+-   All memory is reset
+-   GPU memory is fully released
+
+Once complete, you are redirected back automatically.
+
+------------------------------------------------------------------------
+
+## 🧠 What Is Actually Restarted?
+
+JupyterHub architecture:
+
+User → Kernel → Notebook Server → Hub
+
+When you click **Shut Down All**:
+
+-   The Kernel is stopped\
+-   The Notebook server may also stop\
+-   Your container/session may terminate
+
+When you click **Restart**:
+
+-   A brand-new clean server instance starts\
+-   New Python processes are created\
+-   Old memory allocations are gone
+
+------------------------------------------------------------------------
+
+## 📌 When Should You Use Restart?
+
+Use Restart when:
+
+-   GPU memory does not drop\
+-   You get CUDA Out Of Memory errors\
+-   You ran many experiments in the same notebook\
+-   RAM usage seems stuck\
+-   You want a fully clean state
+
+------------------------------------------------------------------------
+
+## 🛑 When Should You Use Shut Down?
+
+Use Shut Down when:
+
+-   You finished working\
+-   You are leaving the server\
+-   You want to free GPU for others\
+-   You see idle notebooks running
+
+------------------------------------------------------------------------
+
+## 🔬 Why This Is Important on Shared GPU Servers
+
+This server provides:
+
+-   128 CPU threads (shared)\
+-   1 TB RAM (shared)\
+-   1× NVIDIA A100 (40GB VRAM shared)
+
+If users do not shut down idle kernels:
+
+-   GPU memory remains allocated\
+-   RAM stays reserved\
+-   Other users may experience OOM errors\
+-   Training jobs may fail
+
+Restarting ensures:
+
+-   Clean memory state\
+-   Fair resource usage\
+-   Stable shared environment
+
+------------------------------------------------------------------------
+
+## 🏆 Recommended Best Practice
+
+After finishing a heavy experiment:
+
+1.  Shut Down the notebook\
+2.  Restart your server\
+3.  Confirm GPU memory dropped using:
+
+``` bash
+nvidia-smi
+```
+
+If unsure:
+
+> Restart is always safe. It affects only your session.
+
+
+
+------------------------------------------------------------------------
+
 # Best Practices
 
 -   Close unused notebooks.
