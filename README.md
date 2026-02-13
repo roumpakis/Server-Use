@@ -184,7 +184,7 @@ nvidia-smi
 
 
 <p align="center">
-  <img src="simages/smi1_before.png" width="48%">
+  <img src="simages/sm1_before.png" width="48%">
   <img src="simages/sm1_after.png" width="48%">
 </p>
 
