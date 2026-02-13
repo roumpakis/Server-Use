@@ -606,6 +606,106 @@ If unsure:
 
 
 ------------------------------------------------------------------------
+# 7) CPU Thread Limits (Very Important)
+
+> \[!WARNING\] You MUST limit CPU threads before importing NumPy /
+> PyTorch / TensorFlow.\
+> Otherwise, the limits may not take effect and performance can degrade.
+
+This prevents a single training job from using dozens of CPU threads on
+a shared server.
+
+------------------------------------------------------------------------
+
+## Why This Matters
+
+This server has **128 CPU threads**.
+
+Without limits:
+
+-   One training job may use 32--64 threads
+-   Multiple users can oversubscribe CPU
+-   Performance degrades for everyone
+
+Setting thread limits ensures fair CPU usage.
+
+------------------------------------------------------------------------
+
+## Option A --- Inside Python (Notebook or Script)
+
+Place this at the VERY TOP of your file, **before any imports**:
+
+``` python
+import os
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+
+import numpy as np
+import torch
+import tensorflow as tf
+```
+
+This limits linear algebra operations to **1 CPU thread per run**.
+
+You only need to place this once at the top.\
+Not in every cell.
+
+------------------------------------------------------------------------
+
+## Option B --- From Terminal (Per Run)
+
+If running a script:
+
+``` bash
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 python train.py
+```
+
+This applies only to that specific execution.
+
+------------------------------------------------------------------------
+
+## Option C --- Permanent (Recommended for Shared Servers)
+
+Add this to your `~/.bashrc`:
+
+``` bash
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export VECLIB_MAXIMUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+```
+
+Then apply it:
+
+``` bash
+source ~/.bashrc
+```
+
+This applies to all future runs for your user account.
+
+------------------------------------------------------------------------
+
+## What Does This Actually Limit?
+
+These variables limit CPU threads used by:
+
+-   NumPy
+-   PyTorch (CPU operations)
+-   TensorFlow (CPU operations)
+-   BLAS / OpenMP backends
+
+They do NOT limit:
+
+-   GPU usage\
+-   DataLoader multiprocessing workers\
+-   Other system processes
+
+------------------------------------------------------------------------
 
 # Best Practices
 
