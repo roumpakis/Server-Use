@@ -116,8 +116,13 @@ print("Finished.")
 top -u $USER
 ```
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot of top showing user processes here*
+ **Before Running Python Script:**\
+<p align="center">
+  <img src="images/top_before.png" width="800">
+</p>
+
+
+
 
 ------------------------------------------------------------------------
 
