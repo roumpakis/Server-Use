@@ -529,13 +529,13 @@ User → Kernel → Notebook Server → Hub
 
 When you click **Shut Down All**:
 
--   The Kernel is stopped\
--   The Notebook server may also stop\
+-   The Kernel is stopped
+-   The Notebook server may also stop
 -   Your container/session may terminate
 
 When you click **Restart**:
 
--   A brand-new clean server instance starts\
+-   A brand-new clean server instance starts
 -   New Python processes are created\
 -   Old memory allocations are gone
 
@@ -545,10 +545,10 @@ When you click **Restart**:
 
 Use Restart when:
 
--   GPU memory does not drop\
--   You get CUDA Out Of Memory errors\
--   You ran many experiments in the same notebook\
--   RAM usage seems stuck\
+-   GPU memory does not drop
+-   You get CUDA Out Of Memory errors
+-   You ran many experiments in the same notebook
+-   RAM usage seems stuck
 -   You want a fully clean state
 
 ------------------------------------------------------------------------
@@ -557,9 +557,9 @@ Use Restart when:
 
 Use Shut Down when:
 
--   You finished working\
--   You are leaving the server\
--   You want to free GPU for others\
+-   You finished working
+-   You are leaving the server
+-   You want to free GPU for others
 -   You see idle notebooks running
 
 ------------------------------------------------------------------------
@@ -568,21 +568,21 @@ Use Shut Down when:
 
 This server provides:
 
--   128 CPU threads (shared)\
--   1 TB RAM (shared)\
+-   128 CPU threads (shared)
+-   1 TB RAM (shared)
 -   1× NVIDIA A100 (40GB VRAM shared)
 
 If users do not shut down idle kernels:
 
--   GPU memory remains allocated\
--   RAM stays reserved\
--   Other users may experience OOM errors\
+-   GPU memory remains allocated
+-   RAM stays reserved
+-   Other users may experience OOM errors
 -   Training jobs may fail
 
 Restarting ensures:
 
--   Clean memory state\
--   Fair resource usage\
+-   Clean memory state
+-   Fair resource usage
 -   Stable shared environment
 
 ------------------------------------------------------------------------
@@ -591,8 +591,8 @@ Restarting ensures:
 
 After finishing a heavy experiment:
 
-1.  Shut Down the notebook\
-2.  Restart your server\
+1.  Shut Down the notebook
+2.  Restart your server
 3.  Confirm GPU memory dropped using:
 
 ``` bash
