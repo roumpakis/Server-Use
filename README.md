@@ -701,8 +701,8 @@ These variables limit CPU threads used by:
 
 They do NOT limit:
 
--   GPU usage\
--   DataLoader multiprocessing workers\
+-   GPU usage
+-   DataLoader multiprocessing workers
 -   Other system processes
 
 ------------------------------------------------------------------------
