@@ -161,7 +161,6 @@ ps -u $USER -o rss= | awk '{sum+=$1} END {printf "My RAM usage: %.2f GB\n", sum/
 ps -u $USER -o pid,cmd,%cpu,%mem,rss --sort=-rss | head
 ```
 
-📸 **Screenshot Placeholder:**
 <p align="center">
   <img src="simages/ps_before.png" width="48%">
   <img src="simages/ps_after.png" width="48%">
@@ -183,8 +182,17 @@ ps -u $USER -o pid,cmd,%cpu,%mem,rss --sort=-rss | head
 nvidia-smi
 ```
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot of nvidia-smi output*
+
+<p align="center">
+  <img src="simages/smi1_before.png" width="48%">
+  <img src="simages/sm1_after.png" width="48%">
+</p>
+
+<p align="center">
+  <b>Before</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>After</b>
+</p>
+
 
 ------------------------------------------------------------------------
 
@@ -216,8 +224,17 @@ nvidia-smi dmon -d 1
 -   `mclk (MHz)` → Memory clock
 -   `pclk (MHz)` → GPU core clock
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot of dmon output here*
+
+<p align="center">
+  <img src="simages/smi3_before.png" width="48%">
+  <img src="simages/sm3_after.png" width="48%">
+</p>
+
+<p align="center">
+  <b>Before</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>After</b>
+</p>
+
 
 ------------------------------------------------------------------------
 
