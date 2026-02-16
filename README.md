@@ -4,12 +4,6 @@
 
 This guide explains how users can monitor **CPU, RAM, and GPU usage** on
 a shared server environment.
-# System Resources Overview
-
-This server provides the following shared hardware resources.
-All resources are shared among active users.
-
----
 
 
 ## Table of Contents
@@ -23,6 +17,15 @@ All resources are shared among active users.
 7. [CPU Thread Limits (Very Important)](#7-cpu-thread-limits-very-important)
 8. [Best Practices](#best-practices)
 ------------------------------------------------------------------------
+
+# System Resources Overview
+
+This server provides the following shared hardware resources.
+All resources are shared among active users.
+
+---
+
+
 
 ## 🧠 CPU
 
