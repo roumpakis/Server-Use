@@ -525,7 +525,7 @@ When you click **Shut Down All**:
 When you click **Restart**:
 
 -   A brand-new clean server instance starts
--   New Python processes are created\
+-   New Python processes are created
 -   Old memory allocations are gone
 
 ------------------------------------------------------------------------
