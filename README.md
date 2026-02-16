@@ -1,11 +1,5 @@
 # Shared GPU Server --- User Monitoring Manual (Jupyter / ML)
 
-## Overview
-
-This guide explains how users can monitor **CPU, RAM, and GPU usage** on
-a shared server environment.
-
-
 ## Table of Contents
 
 1. [System Resources Overview](#system-resources-overview)
@@ -17,13 +11,14 @@ a shared server environment.
 7. [CPU Thread Limits (Very Important)](#7-cpu-thread-limits-very-important)
 8. [Best Practices](#best-practices)
 ------------------------------------------------------------------------
+## Overview
 
-# System Resources Overview
-
+This guide explains how users can monitor **CPU, RAM, and GPU usage** on
+a shared server environment.
 This server provides the following shared hardware resources.
 All resources are shared among active users.
 
----
+# System Resources Overview
 
 
 
