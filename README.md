@@ -76,6 +76,19 @@ All resources are shared among active users.
 Please monitor your usage responsibly.
 
 
+------------------------------------------------------------------------
+
+## Table of Contents
+
+1. [System Resources Overview](#system-resources-overview)
+2. [CPU & RAM Monitoring](#1-cpu--ram-monitoring)
+3. [GPU Monitoring](#2-gpu-monitoring)
+4. [Identify GPU Processes](#3-identify-your-gpu-processes)
+5. [Releasing RAM / VRAM](#4-releasing-ram--vram-pytorch--tensorflow)
+6. [Restarting & Shutting Down Kernels](#6-restarting-and-shutting-down-kernels-jupyterhub)
+7. [CPU Thread Limits (Very Important)](#7-cpu-thread-limits-very-important)
+8. [Best Practices](#best-practices)
+
 
 ------------------------------------------------------------------------
 
