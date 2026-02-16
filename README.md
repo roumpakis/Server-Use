@@ -605,13 +605,12 @@ If unsure:
 
 ------------------------------------------------------------------------
 # 7) CPU Thread Limits (Very Important)
-
-> \[!WARNING\] You MUST limit CPU threads before importing NumPy /
+> [!CAUTION]
+>  You MUST limit CPU threads before importing NumPy 
 > PyTorch / TensorFlow.\
 > Otherwise, the limits may not take effect and performance can degrade.
 
-This prevents a single training job from using dozens of CPU threads on
-a shared server.
+>This prevents a single training job from using dozens of CPU threads on a shared server.
 
 ------------------------------------------------------------------------
 
