@@ -103,8 +103,6 @@ for _ in range(100):
 print("Finished.")
 ```
 
-📸 **Screenshot Placeholder:**\
-*Add screenshot showing GPU utilization during execution*
 
 ------------------------------------------------------------------------
 
