@@ -100,7 +100,7 @@ top -u $USER
   <b>After</b>
 </p>
 
----
+
 
 > [!NOTE]
 > The `top` command shows that process **PID 7172** is active with **2.7% CPU utilization**. 
@@ -108,7 +108,7 @@ top -u $USER
 
  
 
----
+
 > [!Caution]
 > If a process shows **CPU usage > 100%**, it is utilizing multiple cores.  
 > This may indicate runaway computation or uncontrolled threading.  
