@@ -430,9 +430,9 @@ kernel ensures that RAM and GPU memory (VRAM) are released.
 
 This section explains:
 
--   What each action does\
--   When to use it\
--   What happens internally\
+-   What each action does
+-   When to use it
+-   What happens internally
 -   Why it matters on shared infrastructure
 
 ------------------------------------------------------------------------
