@@ -177,6 +177,11 @@ nvidia-smi
   <b>After</b>
 </p>
 
+> [!NOTE]
+> The `nvidia-smi` output shows that GPU memory usage is **4 MiB / 40960 MiB**, 
+> indicating that the GPU is essentially **idle and empty**.  
+> This confirms that sufficient memory is available before starting the experiment, 
+> and the model can safely be loaded onto the GPU.
 
 ------------------------------------------------------------------------
 
