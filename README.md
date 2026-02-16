@@ -100,10 +100,12 @@ top -u $USER
   <b>After</b>
 </p>
 
-> [!INFO]
-> The `top` command shows that process **PID 7172** is active with **2.7% CPU utilization**.  
-> The total number of running tasks has increased from **12 to 13**, confirming that a new execution thread/process has been initiated.
+---
 
+### ℹ️ Info
+The `top` command shows that process **PID 7172** is active with **2.7% CPU utilization**.  
+The total number of running tasks has increased from **12 to 13**, confirming that a new execution thread/process has been initiated.
+---
 > [!WARNING]
 > If a process shows **CPU usage > 100%**, it is utilizing multiple cores.  
 > This may indicate runaway computation or uncontrolled threading.  
