@@ -36,7 +36,7 @@ If RAM is exhausted, processes may be killed by the system.
 
 ---
 
-## 🎮 GPU
+## ⚙️ GPU Resources
 
 - **GPU Model:** NVIDIA A100-SXM4-40GB
 - **Number of GPUs:** 1
@@ -605,7 +605,7 @@ If unsure:
 
 ------------------------------------------------------------------------
 # 7) CPU Thread Limits (Very Important)
-> [!CAUTION]
+> [!WARNING]
 >  You MUST limit CPU threads before importing NumPy 
 > PyTorch / TensorFlow.\
 > Otherwise, the limits may not take effect and performance can degrade.
