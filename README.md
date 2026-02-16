@@ -75,33 +75,6 @@ This is a high-performance shared ML server with:
 All resources are shared among active users.
 Please monitor your usage responsibly.
 
-------------------------------------------------------------------------
-# 0. Light GPU Utilization Demo (For Screenshots)
-
-Run inside Jupyter Notebook:
-
-``` python
-import time
-import torch
-
-if not torch.cuda.is_available():
-    raise RuntimeError("CUDA is not available.")
-
-device = "cuda"
-n = 4096
-
-a = torch.randn((n, n), device=device)
-b = torch.randn((n, n), device=device)
-
-print("Running light GPU workload...")
-
-for _ in range(100):
-    c = a @ b
-    torch.cuda.synchronize()
-    time.sleep(0.05)
-
-print("Finished.")
-```
 
 
 ------------------------------------------------------------------------
@@ -127,6 +100,14 @@ top -u $USER
   <b>After</b>
 </p>
 
+> [!INFO]
+> The `top` command shows that process **PID 7172** is active with **2.7% CPU utilization**.  
+> The total number of running tasks has increased from **12 to 13**, confirming that a new execution thread/process has been initiated.
+
+> [!WARNING]
+> If a process shows **CPU usage > 100%**, it is utilizing multiple cores.  
+> This may indicate runaway computation or uncontrolled threading.  
+> You should terminate the process and restart the kernel to restore normal resource usage.
 
 
 
